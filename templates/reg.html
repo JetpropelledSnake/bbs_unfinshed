@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>欢迎注册</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <style>
+        .reg-form {
+            margin-top: 70px;
+        }
+
+        #show-avatar {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 reg-form">
+            <form class="form-horizontal" autocomplete="off" novalidate>
+                <div class="form-group">
+                    <label for="{{ form_obj.username.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.username.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form_obj.username }}
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form_obj.password.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.password.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form_obj.password }}
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form_obj.re_password.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.re_password.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form_obj.re_password }}
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form_obj.phone.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.phone.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form_obj.phone }}
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">头像</label>
+                    <div class="col-sm-10">
+                        <input accept="image/*" type="file" id="id_avatar" name="avatar" style="display: none">
+                        <label for="id_avatar"><img src="/static/img/default.png" id="show-avatar"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-success" id="reg-button">注册</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/setupAjax.js"></script>
+
+<script>
+    $("#reg-button").click(function() {
+        let dataObj = new FormData();
+        dataObj.append("username", $("#id_username").val());
+        dataObj.append("password", $("#id_password").val());
+        dataObj.append("re_password", $("#id_re_password").val());
+        dataObj.append("phone", $("#id_phone").val());
+        dataObj.append("avatar", $("#id_avatar")[0].files[0]);
+        $.ajax({
+            url:"/reg/",
+            processData:false,
+            contentType:false,
+            data:dataObj,
+            success: function(data){
+                console.log(data);
+                if(data.code){
+                    let errMsgObj = data.data;
+                    $.each(errMsgObj, function (k,v) {
+                        $("#id_"+k).next(".help-block").next(v[0]).parent().parent().addClass("has-error");
+                    })
+                }else{
+                    console.log(data.data);
+                    location.href = data.data || "/login/"
+                }
+            }
+        })
+    });
+
+    $("input.form-control").focus(function() {
+        $(this).next(".help-block").text("").parent().parent().removeClass("has-error");
+    });
+
+    $("#id_avatar").change(function() {
+        let fileObj = this.files[0];
+        console.log(fileObj);
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(fileObj);
+        fileReader.onload = function(){
+          $("#show-avatar").attr("src",fileReader.result);
+        };
+    })
+
+</script>
+
+</body>
+</html>

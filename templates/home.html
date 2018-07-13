@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block page-main %}
+    <div class="article-list">
+        {% for article in article_list %}
+            <div class="article">
+                <div class="article-top">
+                    <h2><a href="/blog/{{ username }}/article/{{ article.nid }}/">{{ article.title }}</a></h2>
+                </div>
+                <div class="article-middle">
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#">
+                                <img class="media-object article-avatar" src="/media/{{ article.user.avatar }}"
+                                     alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            {{ article.desc }}
+                        </div>
+                    </div>
+                </div>
+                <div class="article-footer">
+                    <span class="article-user"><a
+                            href="/blog/{{ article.user.username }}/">{{ article.user.username }}</a></span>发布于
+                    <span>{{ article.create_time }}</span>
+                    <span class="glyphicon glyphicon-thumbs-up">点赞({{ article.up_count }})</span>
+                    <span class="glyphicon glyphicon-comment">评论({{ article.comment_count }})</span>
+                </div>
+            </div>
+        {% endfor %}
+
+            {{ page_html|safe }}
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+[2018-07-10 19:50:12,458][Thread-2:13136][task_id:django.request][base.py:152][WARNING][Not Found: /]
+[2018-07-10 19:50:13,505][Thread-9:13956][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2018-07-10 19:54:35,839][Thread-16:1712][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2018-07-10 20:11:35,841][Thread-21:8012][task_id:blog.views][views.py:150][INFO][小伙子，又来了！]
+[2018-07-10 20:11:35,845][Thread-21:8012][task_id:collect][views.py:151][INFO][小伙子，又走了！]
+[2018-07-10 20:11:50,995][Thread-23:15648][task_id:blog.views][views.py:150][INFO][小伙子，又来了！]
+[2018-07-10 20:11:50,996][Thread-23:15648][task_id:collect][views.py:151][INFO][小伙子，又走了！]
+[2018-07-10 20:25:17,125][Thread-9:7164][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:26:20,154][Thread-14:17756][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:26:20,225][Thread-15:9408][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:26:27,233][Thread-17:13068][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:26:27,277][Thread-18:16980][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:26:30,350][Thread-21:10340][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:26:30,421][Thread-22:19984][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:27:03,170][Thread-25:5388][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:27:32,267][Thread-37:9724][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:27:32,324][Thread-38:6160][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:29:23,802][Thread-1:13208][task_id:django.request][base.py:152][WARNING][Not Found: /]
+[2018-07-10 20:48:04,767][Thread-6:3600][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /login2/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Django\d79_bbs\blog\views.py", line 68, in login2
+    password = result.POST.get("password")
+AttributeError: 'int' object has no attribute 'POST'
+[2018-07-10 20:48:57,225][Thread-8:18552][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /login2/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Django\d79_bbs\blog\views.py", line 68, in login2
+    password = result.POST.get("password")
+AttributeError: 'int' object has no attribute 'POST'
+[2018-07-10 20:50:46,506][Thread-9:5824][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:50:46,868][Thread-10:11576][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:51:25,586][Thread-13:8248][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:51:25,940][Thread-14:3224][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:53:34,538][Thread-17:5628][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:53:34,652][Thread-18:17964][task_id:django.request][base.py:152][WARNING][Not Found: /media/avatars/cr_u2CxR1x.png]
+[2018-07-10 20:53:49,786][Thread-21:10880][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:57:37,328][Thread-24:12184][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 20:59:22,547][Thread-27:11756][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]
+[2018-07-10 21:04:00,239][Thread-30:1496][task_id:django.request][base.py:152][WARNING][Not Found: /media/themes/zhangzhao.css]

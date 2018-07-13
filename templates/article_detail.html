@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block page-main %}
+    <div class="article-detail">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-content">
+            {{ article.articledetail.content|safe }}
+        </div>
+    </div>
+    <div id="div_digg">
+        <div class="diggit dig">
+            <span class="diggnum" id="digg_count">{{ ariticle.up_count }}</span>
+        </div>
+        <div class="buryit dig">
+            <span class="burynum" id="bury_count">{{ article.down_count }}</span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="diggword" id="digg_tips">
+        </div>
+    </div>
+
+    <hr style="clear:both">
+
+    <div class="comment-list">
+        <h3>评论列表</h3>
+        <ul class="list-group">
+            {% for comment in comment_list %}
+                {% if comment.parent_comment %}
+                    <li class="list-group-item">
+                        <p class="small"><span>#{{ forloop.counter }}楼</span> <span>{{ comment.create_time }}</span>
+                            <a href="/blog/{{ comment.user.username }}/">{{ comment.user.username }}</a></p>
+                        <div>
+                            <p>@ <span>{{ comment.parent_comment.user.username }}</span></p>
+                            <p class="well">{{ comment.content }}</p>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="list-group-item">
+                        <p class="small"><span>#{{ forloop.counter }}楼<</span><span>{{ comment.create_time }}</span>
+                            <a href="/blog/{{ comment.user.username }}/">{{ comment.user.username }}</a></p>>
+                        <p>{{ comment.content }}</p>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="add-comment col-md-6">
+        <h3>发表评论</h3>
+        <div class="panel panel-success">
+            <div class="panel panel-heading">
+                <h3 class="panel-title">{{ request.user.username }}</h3>
+            </div>
+            <div class="panel-body">
+                <p>评论内容</p>
+                <textarea style="width: 100%" name="" id="" cols="30" rows="10">
+
+                </textarea>
+                <button class="btn btn-success pull-right">提交</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block page-js %}
+    <script>
+        $("#div_digg").on("click", ".dig", function () {
+            console.log(this);
+            let isUp = $(this).hasClass("diggit");
+            let articleId = '{{ article.nid }}';
+            console.log(articleId);
+
+            let userId = '{{ request.user.nid }}';
+            if (!userId) {
+                location.href = "/login/"
+            } else {
+                $.ajax({
+                    url: "/updown/",
+                    type: "POST",
+                    data: {
+                        article_id: articleId,
+                        is_up: isUp,
+                        user_id: userId
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code) {
+                            $("#digg_tips").text(data.data);
+                        } else {
+                            if (isUp) {
+                                let $upCount = $("#digg_count");
+                                $upCount.text(+$upCount.text() + 1);
+                            } else {
+                                let $downCount = $("#bury_count");
+                                $downCount.text(+$downCount.text() + 1);
+                            }
+                            $("#digg_tips").text(data.data);
+                        }
+                    }
+                })
+            }
+        })
+
+
+    </script>
+{% endblock %}

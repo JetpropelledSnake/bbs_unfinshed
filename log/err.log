@@ -1,0 +1,22 @@
+[2018-07-10 20:48:04,767][Thread-6:3600][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /login2/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Django\d79_bbs\blog\views.py", line 68, in login2
+    password = result.POST.get("password")
+AttributeError: 'int' object has no attribute 'POST'
+[2018-07-10 20:48:57,225][Thread-8:18552][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /login2/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Django\d79_bbs\blog\views.py", line 68, in login2
+    password = result.POST.get("password")
+AttributeError: 'int' object has no attribute 'POST'

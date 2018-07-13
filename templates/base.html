@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ blog.title }}</title>
+    <link rel="stylesheet" href="/static/mybbs.css">
+    <link rel="stylesheet" href="/media/themes/{{ blog.theme }}">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="header">
+    <p>{{ blog.title }} <a class="index-url" href="/index/">首页</a></p>
+</div>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-md-3">
+            {% load mytag %}
+            {% left_panel username %}
+        </div>
+        <div class="col-md-9">
+            {% block page-main %}
+            {% endblock page-main %}
+        </div>
+    </div>
+</div>
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/setupAjax.js"></script>
+
+{% block page-js %}
+
+{% endblock %}
+
+</body>
+</html>
